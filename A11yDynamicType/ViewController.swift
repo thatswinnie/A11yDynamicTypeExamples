@@ -9,11 +9,20 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
+    @IBAction func didTapConstraints() {
+        let viewController = ConstraintsViewController()
+        navigationController?.show(viewController, sender: nil)
     }
 
+    @IBAction func didTapHeight() {
+        let viewController = HeightViewController()
+        navigationController?.show(viewController, sender: nil)
+    }
+
+    @IBAction func didTapRelayout() {
+        let viewController = RelayoutViewController()
+        navigationController?.show(viewController, sender: nil)
+    }
 
 }
 
