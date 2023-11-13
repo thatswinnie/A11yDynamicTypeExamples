@@ -28,7 +28,7 @@ class ConstraintsViewController: UIViewController {
         label.textColor = .black
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.isHidden = true
+        label.isHidden = true // comment out to display label with correct constraints
         return label
     }()
 
@@ -69,8 +69,8 @@ class ConstraintsViewController: UIViewController {
 
             label2.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 80),
             label2.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            label2.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            label2.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            label2.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor),
+            label2.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor),
             label2.bottomAnchor.constraint(lessThanOrEqualTo: guide.bottomAnchor)
         ])
     }

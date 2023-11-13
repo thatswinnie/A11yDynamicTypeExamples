@@ -15,6 +15,7 @@ class HeightViewController: UIViewController {
         button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
         button.titleLabel?.adjustsFontForContentSizeCategory = true
         button.titleLabel?.numberOfLines = 1
+        button.titleLabel?.textAlignment = .center
 
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.lineBreakMode = .byWordWrapping
@@ -34,6 +35,7 @@ class HeightViewController: UIViewController {
         button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
         button.titleLabel?.adjustsFontForContentSizeCategory = true
         button.titleLabel?.numberOfLines = 0
+        button.titleLabel?.textAlignment = .center
 
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.lineBreakMode = .byWordWrapping
@@ -43,8 +45,9 @@ class HeightViewController: UIViewController {
                                                 left: 10,
                                                 bottom: 10,
                                                 right: 10)
-        button.layer.cornerRadius = UIFontMetrics.default.scaledValue(for: 5) // scale the rounded corners
-        button.isHidden = true
+        button.isHidden = true // comment out to display label with correct constraints
+        button.layer.cornerRadius = 5.0
+//        button.layer.cornerRadius = UIFontMetrics.default.scaledValue(for: 5) // scale the rounded corners
         return button
     }()
 
@@ -57,11 +60,20 @@ class HeightViewController: UIViewController {
         button2.setTitle("I am a wonderful button 2", for: .normal)
     }
 
+    @objc func preferredContentSizeChanged(_ notification: Notification) {
+//        button2.layer.cornerRadius = UIFontMetrics.default.scaledValue(for: 5) // scale the rounded corners
+    }
+
     private func setupView() {
         view.backgroundColor = .white
         view.addSubview(button)
         view.addSubview(button2)
         setupConstraints()
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(preferredContentSizeChanged(_:)),
+                                               name: UIContentSizeCategory.didChangeNotification,
+                                               object: nil)
     }
 
     private func setupConstraints() {
@@ -75,7 +87,7 @@ class HeightViewController: UIViewController {
             button2.topAnchor.constraint(equalTo: button.bottomAnchor, constant: 40),
             button2.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             button2.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            button2.bottomAnchor.constraint(lessThanOrEqualTo: guide.bottomAnchor)
+            button2.bottomAnchor.constraint(lessThanOrEqualTo: guide.bottomAnchor),
         ])
     }
 }
