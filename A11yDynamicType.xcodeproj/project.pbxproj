@@ -17,7 +17,6 @@
 		E1BDFD322892BE46009F4B2E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1BDFD302892BE46009F4B2E /* LaunchScreen.storyboard */; };
 		E1BDFD3B2892C4A0009F4B2E /* ConstraintsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BDFD3A2892C4A0009F4B2E /* ConstraintsViewController.swift */; };
 		E1BDFD3D2892DF47009F4B2E /* HeightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BDFD3C2892DF47009F4B2E /* HeightViewController.swift */; };
-		E1BDFD3F2892E987009F4B2E /* ResizableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BDFD3E2892E987009F4B2E /* ResizableButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +32,6 @@
 		E1BDFD332892BE46009F4B2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E1BDFD3A2892C4A0009F4B2E /* ConstraintsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsViewController.swift; sourceTree = "<group>"; };
 		E1BDFD3C2892DF47009F4B2E /* HeightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeightViewController.swift; sourceTree = "<group>"; };
-		E1BDFD3E2892E987009F4B2E /* ResizableButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResizableButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +81,6 @@
 				E1BDFD2E2892BE46009F4B2E /* Assets.xcassets */,
 				E1BDFD302892BE46009F4B2E /* LaunchScreen.storyboard */,
 				E1BDFD332892BE46009F4B2E /* Info.plist */,
-				E1BDFD3E2892E987009F4B2E /* ResizableButton.swift */,
 			);
 			path = A11yDynamicType;
 			sourceTree = "<group>";
@@ -126,7 +123,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1520;
 				TargetAttributes = {
 					E1BDFD212892BE46009F4B2E = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -174,7 +171,6 @@
 				E1BDFD262892BE46009F4B2E /* AppDelegate.swift in Sources */,
 				E1BDFD3B2892C4A0009F4B2E /* ConstraintsViewController.swift in Sources */,
 				E1BDFD282892BE46009F4B2E /* SceneDelegate.swift in Sources */,
-				E1BDFD3F2892E987009F4B2E /* ResizableButton.swift in Sources */,
 				E16237FC2B92352300A938BE /* UIViewExtension.swift in Sources */,
 				E13BDF252893270D00B7BDAA /* RelayoutViewController.swift in Sources */,
 			);
@@ -238,6 +234,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -298,6 +295,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
