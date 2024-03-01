@@ -9,28 +9,24 @@ import UIKit
 
 class ConstraintsViewController: UIViewController {
 
-    private lazy var label: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.adjustsFontForContentSizeCategory = true
-        label.font = UIFont.preferredFont(forTextStyle: .body)
-        label.textColor = .black
-        label.textAlignment = .center
-        label.numberOfLines = 0
-        return label
-    }()
+    private var useCorrectConstraints = false
 
-    private lazy var label2: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var label: UILabel = .build { label in
         label.adjustsFontForContentSizeCategory = true
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.textColor = .black
         label.textAlignment = .center
         label.numberOfLines = 0
-        label.isHidden = true // comment out to display label with correct constraints
-        return label
-    }()
+    }
+
+    private lazy var label2: UILabel = .build { label in
+        label.adjustsFontForContentSizeCategory = true
+        label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.textColor = .black
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.isHidden = !self.useCorrectConstraints
+    }
 
     // MARK: - View lifecycle
     override func viewDidLoad() {
