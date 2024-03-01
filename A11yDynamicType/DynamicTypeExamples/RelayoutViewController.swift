@@ -9,69 +9,56 @@ import UIKit
 
 class RelayoutViewController: UIViewController {
 
+    private var useCorrectConstraints = false
+
     private var imageWidthConstraint: NSLayoutConstraint!
 
-    private lazy var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        return scrollView
-    }()
+    private lazy var scrollView: UIScrollView = .build()
+    private lazy var contentView: UIView = .build()
 
-    private lazy var contentView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private lazy var stackView: UIStackView = .build { view in
+        view.axis = .horizontal
+        view.spacing = 20
+        view.distribution = .fill
+        view.alignment = .top
+    }
 
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.spacing = 20
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.distribution = .fill
-        stackView.alignment = .top
-        return stackView
-    }()
+    private lazy var cardContentView: UIView = .build()
 
-    private lazy var cardContentView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private lazy var imageView: UIImageView = .build { view in
+        view.image = UIImage(named: "mozilla-private-search")
+        view.adjustsImageSizeForAccessibilityContentSizeCategory = true
+    }
 
-    private lazy var imageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "mozilla-private-search"))
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.adjustsImageSizeForAccessibilityContentSizeCategory = true
-        return imageView
-    }()
-
-    private lazy var label: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var label: UILabel = .build { label in
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.textColor = .black
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontForContentSizeCategory = true
         label.numberOfLines = 0
-        return label
-    }()
+    }
 
-    private lazy var button: ResizableButton = {
-        let button = ResizableButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
+    private lazy var button: UIButton = .build { button in
+        var configuration = UIButton.Configuration.filled()
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 10,
+                                                              leading: 10,
+                                                              bottom: 10,
+                                                              trailing: 10)
+        configuration.title = "Learn more"
+        configuration.titleAlignment = .center
+        configuration.titleLineBreakMode = .byWordWrapping
+        configuration.baseForegroundColor = .black
+        configuration.baseBackgroundColor = .lightGray
+        configuration.background.cornerRadius = 5.0
+        configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { [weak self] incoming in
+            var container = incoming
+            container.font = UIFont.preferredFont(forTextStyle: .body)
+            return container
+        }
+
+        button.configuration = configuration
         button.titleLabel?.adjustsFontForContentSizeCategory = true
-        button.titleLabel?.numberOfLines = 0
-
-        button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.lineBreakMode = .byWordWrapping
-        button.clipsToBounds = true
-        button.backgroundColor = .lightGray
-        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        button.layer.cornerRadius = UIFontMetrics.default.scaledValue(for: 5) // scale the rounded corners
-        return button
-    }()
+    }
 
     // MARK: - View lifecycle
     override func viewDidLoad() {
@@ -84,17 +71,17 @@ class RelayoutViewController: UIViewController {
                                                object: nil)
 
         label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget scelerisque mi, vitae bibendum sapien. Proin sodales orci quis mi laoreet, quis dignissim mi elementum."
-        button.setTitle("Learn more", for: .normal)
     }
 
     @objc func preferredContentSizeChanged(_ notification: Notification) {
-//        imageWidthConstraint?.constant = UIFontMetrics.default.scaledValue(for: 100) // scale the image
-//
-//        if traitCollection.preferredContentSizeCategory.isAccessibilityCategory {
-//            stackView.axis = .vertical
-//        } else {
-//            stackView.axis = .horizontal
-//        }
+        guard useCorrectConstraints else { return }
+        imageWidthConstraint?.constant = UIFontMetrics.default.scaledValue(for: 100) // scale the image
+
+        if traitCollection.preferredContentSizeCategory.isAccessibilityCategory {
+            stackView.axis = .vertical
+        } else {
+            stackView.axis = .horizontal
+        }
     }
 
     private func setupView() {
