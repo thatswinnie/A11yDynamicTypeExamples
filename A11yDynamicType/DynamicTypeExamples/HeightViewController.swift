@@ -9,59 +9,58 @@ import UIKit
 
 class HeightViewController: UIViewController {
 
-    private lazy var button: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
+    private var useCorrectConstraints = false
+
+    private lazy var button: UIButton = .build { button in
+        var configuration = UIButton.Configuration.filled()
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 10,
+                                                              leading: 10,
+                                                              bottom: 10,
+                                                              trailing: 10)
+        configuration.title = "I am a wonderful button"
+        configuration.titleAlignment = .center
+        configuration.titleLineBreakMode = .byWordWrapping
+        configuration.baseForegroundColor = .black
+        configuration.baseBackgroundColor = .lightGray
+        configuration.background.cornerRadius = 5.0
+        configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { [weak self] incoming in
+            var container = incoming
+            container.font = UIFont.preferredFont(forTextStyle: .body)
+            return container
+        }
+
+        button.configuration = configuration
         button.titleLabel?.adjustsFontForContentSizeCategory = true
-        button.titleLabel?.numberOfLines = 1
-        button.titleLabel?.textAlignment = .center
-
-        button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.lineBreakMode = .byWordWrapping
         button.clipsToBounds = true
-        button.backgroundColor = .lightGray
-        button.contentEdgeInsets = UIEdgeInsets(top: 10,
-                                                left: 10,
-                                                bottom: 10,
-                                                right: 10)
-        button.layer.cornerRadius = 5.0
-        return button
-    }()
+    }
 
-    private lazy var button2: ResizableButton = {
-        let button = ResizableButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
+    private lazy var button2: UIButton = .build { button in
+        var configuration = UIButton.Configuration.filled()
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 10,
+                                                              leading: 10,
+                                                              bottom: 10,
+                                                              trailing: 10)
+        configuration.title = "I am a wonderful button 2"
+        configuration.titleAlignment = .center
+        configuration.titleLineBreakMode = .byWordWrapping
+        configuration.baseForegroundColor = .black
+        configuration.baseBackgroundColor = .lightGray
+        configuration.background.cornerRadius = 5.0
+        configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { [weak self] incoming in
+            var container = incoming
+            container.font = UIFont.preferredFont(forTextStyle: .body)
+            return container
+        }
+
+        button.configuration = configuration
         button.titleLabel?.adjustsFontForContentSizeCategory = true
-        button.titleLabel?.numberOfLines = 0
-        button.titleLabel?.textAlignment = .center
-
-        button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.lineBreakMode = .byWordWrapping
-        button.clipsToBounds = true
-        button.backgroundColor = .lightGray
-        button.contentEdgeInsets = UIEdgeInsets(top: 10,
-                                                left: 10,
-                                                bottom: 10,
-                                                right: 10)
-        button.isHidden = true // comment out to display label with correct constraints
-        button.layer.cornerRadius = 5.0
-//        button.layer.cornerRadius = UIFontMetrics.default.scaledValue(for: 5) // scale the rounded corners
-        return button
-    }()
+        button.isHidden = !self.useCorrectConstraints
+    }
 
     // MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-
-        button.setTitle("I am a wonderful button", for: .normal)
-        button2.setTitle("I am a wonderful button 2", for: .normal)
-    }
-
-    @objc func preferredContentSizeChanged(_ notification: Notification) {
-//        button2.layer.cornerRadius = UIFontMetrics.default.scaledValue(for: 5) // scale the rounded corners
     }
 
     private func setupView() {
@@ -69,11 +68,6 @@ class HeightViewController: UIViewController {
         view.addSubview(button)
         view.addSubview(button2)
         setupConstraints()
-
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(preferredContentSizeChanged(_:)),
-                                               name: UIContentSizeCategory.didChangeNotification,
-                                               object: nil)
     }
 
     private func setupConstraints() {
