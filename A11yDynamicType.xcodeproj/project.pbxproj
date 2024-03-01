@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E13BDF252893270D00B7BDAA /* RelayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BDF242893270D00B7BDAA /* RelayoutViewController.swift */; };
+		E16237FC2B92352300A938BE /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16237FB2B92352200A938BE /* UIViewExtension.swift */; };
 		E1BDFD262892BE46009F4B2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BDFD252892BE46009F4B2E /* AppDelegate.swift */; };
 		E1BDFD282892BE46009F4B2E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BDFD272892BE46009F4B2E /* SceneDelegate.swift */; };
 		E1BDFD2A2892BE46009F4B2E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BDFD292892BE46009F4B2E /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		E13BDF242893270D00B7BDAA /* RelayoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelayoutViewController.swift; sourceTree = "<group>"; };
+		E16237FB2B92352200A938BE /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		E1BDFD222892BE46009F4B2E /* A11yDynamicType.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = A11yDynamicType.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1BDFD252892BE46009F4B2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1BDFD272892BE46009F4B2E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E16237F82B92330800A938BE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E16237FB2B92352200A938BE /* UIViewExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E1BDFD192892BE46009F4B2E = {
 			isa = PBXGroup;
 			children = (
@@ -64,6 +74,7 @@
 		E1BDFD242892BE46009F4B2E /* A11yDynamicType */ = {
 			isa = PBXGroup;
 			children = (
+				E16237F82B92330800A938BE /* Extensions */,
 				E1BDFD392892C477009F4B2E /* DynamicTypeExamples */,
 				E1BDFD252892BE46009F4B2E /* AppDelegate.swift */,
 				E1BDFD272892BE46009F4B2E /* SceneDelegate.swift */,
@@ -164,6 +175,7 @@
 				E1BDFD3B2892C4A0009F4B2E /* ConstraintsViewController.swift in Sources */,
 				E1BDFD282892BE46009F4B2E /* SceneDelegate.swift in Sources */,
 				E1BDFD3F2892E987009F4B2E /* ResizableButton.swift in Sources */,
+				E16237FC2B92352300A938BE /* UIViewExtension.swift in Sources */,
 				E13BDF252893270D00B7BDAA /* RelayoutViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
