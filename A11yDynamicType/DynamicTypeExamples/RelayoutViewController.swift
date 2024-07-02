@@ -87,8 +87,8 @@ class RelayoutViewController: UIViewController {
     private func setupView() {
         view.backgroundColor = .white
 
-        contentView.addSubview(label)
-        contentView.addSubview(button)
+        cardContentView.addSubview(label)
+        cardContentView.addSubview(button)
 
         stackView.addArrangedSubview(imageView)
         stackView.addArrangedSubview(cardContentView)
