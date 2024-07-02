@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E13BDF252893270D00B7BDAA /* RelayoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13BDF242893270D00B7BDAA /* RelayoutViewController.swift */; };
+		E14B5FA92C345D260035183F /* AccessibilityIdentifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14B5FA82C345D260035183F /* AccessibilityIdentifiers.swift */; };
 		E16237FC2B92352300A938BE /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16237FB2B92352200A938BE /* UIViewExtension.swift */; };
 		E1BDFD262892BE46009F4B2E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BDFD252892BE46009F4B2E /* AppDelegate.swift */; };
 		E1BDFD282892BE46009F4B2E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BDFD272892BE46009F4B2E /* SceneDelegate.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		E13BDF242893270D00B7BDAA /* RelayoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RelayoutViewController.swift; sourceTree = "<group>"; };
+		E14B5FA82C345D260035183F /* AccessibilityIdentifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifiers.swift; sourceTree = "<group>"; };
 		E16237FB2B92352200A938BE /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		E1BDFD222892BE46009F4B2E /* A11yDynamicType.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = A11yDynamicType.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1BDFD252892BE46009F4B2E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				E1BDFD2E2892BE46009F4B2E /* Assets.xcassets */,
 				E1BDFD302892BE46009F4B2E /* LaunchScreen.storyboard */,
 				E1BDFD332892BE46009F4B2E /* Info.plist */,
+				E14B5FA82C345D260035183F /* AccessibilityIdentifiers.swift */,
 			);
 			path = A11yDynamicType;
 			sourceTree = "<group>";
@@ -173,6 +176,7 @@
 				E1BDFD282892BE46009F4B2E /* SceneDelegate.swift in Sources */,
 				E16237FC2B92352300A938BE /* UIViewExtension.swift in Sources */,
 				E13BDF252893270D00B7BDAA /* RelayoutViewController.swift in Sources */,
+				E14B5FA92C345D260035183F /* AccessibilityIdentifiers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

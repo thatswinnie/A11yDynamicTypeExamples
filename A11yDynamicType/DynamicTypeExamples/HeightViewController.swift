@@ -32,6 +32,7 @@ class HeightViewController: UIViewController {
         button.configuration = configuration
         button.titleLabel?.adjustsFontForContentSizeCategory = true
         button.clipsToBounds = true
+        button.accessibilityIdentifier = AccessibilityIdentifiers.HeightExample.brokenButton
     }
 
     private lazy var button2: UIButton = .build { button in
@@ -54,6 +55,7 @@ class HeightViewController: UIViewController {
 
         button.configuration = configuration
         button.titleLabel?.adjustsFontForContentSizeCategory = true
+        button.accessibilityIdentifier = AccessibilityIdentifiers.HeightExample.goodButton
         button.isHidden = !self.useCorrectConstraints
     }
 

@@ -17,6 +17,7 @@ class ConstraintsViewController: UIViewController {
         label.textColor = .black
         label.textAlignment = .center
         label.numberOfLines = 0
+        label.accessibilityIdentifier = AccessibilityIdentifiers.ConstraintExample.brokenLabel
     }
 
     private lazy var label2: UILabel = .build { label in
@@ -25,6 +26,7 @@ class ConstraintsViewController: UIViewController {
         label.textColor = .black
         label.textAlignment = .center
         label.numberOfLines = 0
+        label.accessibilityIdentifier = AccessibilityIdentifiers.ConstraintExample.goodLabel
         label.isHidden = !self.useCorrectConstraints
     }
 

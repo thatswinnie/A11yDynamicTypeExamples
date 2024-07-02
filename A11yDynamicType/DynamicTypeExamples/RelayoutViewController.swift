@@ -28,6 +28,7 @@ class RelayoutViewController: UIViewController {
     private lazy var imageView: UIImageView = .build { view in
         view.image = UIImage(named: "mozilla-private-search")
         view.adjustsImageSizeForAccessibilityContentSizeCategory = true
+        view.accessibilityIdentifier = AccessibilityIdentifiers.RelayoutExample.cardImage
     }
 
     private lazy var label: UILabel = .build { label in
@@ -36,6 +37,7 @@ class RelayoutViewController: UIViewController {
         label.lineBreakMode = .byWordWrapping
         label.adjustsFontForContentSizeCategory = true
         label.numberOfLines = 0
+        label.accessibilityIdentifier = AccessibilityIdentifiers.RelayoutExample.cardText
     }
 
     private lazy var button: UIButton = .build { button in
@@ -58,6 +60,7 @@ class RelayoutViewController: UIViewController {
 
         button.configuration = configuration
         button.titleLabel?.adjustsFontForContentSizeCategory = true
+        button.accessibilityIdentifier = AccessibilityIdentifiers.RelayoutExample.cardButton
     }
 
     // MARK: - View lifecycle
