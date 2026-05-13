@@ -25,12 +25,17 @@ class HeightViewController: UIViewController {
         configuration.background.cornerRadius = 5.0
         configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { [weak self] incoming in
             var container = incoming
-            container.font = UIFont.preferredFont(forTextStyle: .body)
+            let fontMetrics = UIFontMetrics(forTextStyle: .body)
+            let fontDescriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .body)
+            container.font = fontMetrics.scaledFont(for: UIFont(descriptor: fontDescriptor, size: 17))
             return container
         }
 
         button.configuration = configuration
         button.titleLabel?.adjustsFontForContentSizeCategory = true
+        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
+        button.titleLabel?.numberOfLines = 0
+        button.titleLabel?.textAlignment = .center
         button.clipsToBounds = true
         button.accessibilityIdentifier = AccessibilityIdentifiers.HeightExample.brokenButton
     }
@@ -49,12 +54,17 @@ class HeightViewController: UIViewController {
         configuration.background.cornerRadius = 5.0
         configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { [weak self] incoming in
             var container = incoming
-            container.font = UIFont.preferredFont(forTextStyle: .body)
+            let fontMetrics = UIFontMetrics(forTextStyle: .body)
+            let fontDescriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .body)
+            container.font = fontMetrics.scaledFont(for: UIFont(descriptor: fontDescriptor, size: 17))
             return container
         }
 
         button.configuration = configuration
         button.titleLabel?.adjustsFontForContentSizeCategory = true
+        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
+        button.titleLabel?.numberOfLines = 0
+        button.titleLabel?.textAlignment = .center
         button.accessibilityIdentifier = AccessibilityIdentifiers.HeightExample.goodButton
         button.isHidden = !self.useCorrectConstraints
     }
@@ -63,6 +73,16 @@ class HeightViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        guard traitCollection.preferredContentSizeCategory != previousTraitCollection?.preferredContentSizeCategory
+        else { return }
+
+        button.setNeedsUpdateConfiguration()
+        button2.setNeedsUpdateConfiguration()
     }
 
     private func setupView() {
