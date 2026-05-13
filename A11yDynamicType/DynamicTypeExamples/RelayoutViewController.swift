@@ -54,12 +54,15 @@ class RelayoutViewController: UIViewController {
         configuration.background.cornerRadius = 5.0
         configuration.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { [weak self] incoming in
             var container = incoming
-            container.font = UIFont.preferredFont(forTextStyle: .body)
+            let fontMetrics = UIFontMetrics(forTextStyle: .body)
+            let fontDescriptor = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .body)
+            container.font = fontMetrics.scaledFont(for: UIFont(descriptor: fontDescriptor, size: 17))
             return container
         }
 
         button.configuration = configuration
         button.titleLabel?.adjustsFontForContentSizeCategory = true
+        button.titleLabel?.numberOfLines = 0
         button.accessibilityIdentifier = AccessibilityIdentifiers.RelayoutExample.cardButton
     }
 
@@ -77,8 +80,24 @@ class RelayoutViewController: UIViewController {
     }
 
     @objc func preferredContentSizeChanged(_ notification: Notification) {
+        updateViewForA11y()
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        guard traitCollection.preferredContentSizeCategory != previousTraitCollection?.preferredContentSizeCategory
+        else { return }
+
+        updateViewForA11y()
+    }
+
+    private func updateViewForA11y() {
         guard useCorrectConstraints else { return }
+
         imageWidthConstraint?.constant = UIFontMetrics.default.scaledValue(for: 100) // scale the image
+
+        button.setNeedsUpdateConfiguration()
 
         if traitCollection.preferredContentSizeCategory.isAccessibilityCategory {
             stackView.axis = .vertical
